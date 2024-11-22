@@ -36,12 +36,18 @@ type HomeConfig struct {
 	Image       string   `mapstructure:"image"`
 	Description string   `mapstructure:"description"`
 	Social      []Social `mapstructure:"social"`
+	Buttons     []Button `mapstructure:"buttons"`
 }
 
 type Social struct {
 	Icon string `mapstructure:"icon"`
 	Name string `mapstructure:"name"`
 	URL  string `mapstructure:"url"`
+}
+
+type Button struct {
+	Name string
+	URL  string
 }
 
 func NewConfig() JattConfig {

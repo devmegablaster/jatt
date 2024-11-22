@@ -3,13 +3,13 @@ package templates
 import "github.com/devmegablaster/jatt/internal/config"
 
 templ Nav(navCfg config.NavConfig) {
-	<div class="flex justify-between items-center pt-2">
+	<div class="flex md:flex-row flex-col justify-between items-center pt-2">
 		<div class="flex space-x-3 items-center">
 			<a href="/" class="text-white text-2xl font-bold">
 				devmegablaster
 			</a>
 		</div>
-		<div class="flex justify-center items-center space-x-4">
+		<div class="flex justify-center items-center md:space-x-4 space-x-2">
 			for _, navItem := range navCfg.NavItems {
 				@NavButton(navItem)
 			}

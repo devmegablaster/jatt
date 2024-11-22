@@ -28,3 +28,8 @@ home:
     - name: LinkedIn
       icon: linkedin.svg
       url: "https://www.linkedin.com/in/ojastyagi/"
+  buttons:
+    - name: Posts
+      url: /posts
+    - name: About
+      url: /about
