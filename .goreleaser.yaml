@@ -43,3 +43,15 @@ brews:
     commit_author:
       name: devmegablaster
       email: devmegablaster@gmail.com
+
+nix:
+  - name: jatt
+    homepage: https://github.com/devmegablaster/jatt
+    repository:
+      owner: devmegablaster
+      name: nur
+      branch: master
+    commit_author:
+      name: devmegablaster
+      email: devmegablaster@gmail.com
+

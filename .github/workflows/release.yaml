@@ -21,6 +21,11 @@ jobs:
         name: Set up Go
         uses: actions/setup-go@v5
       -
+        name: Setup Nix
+        uses: cachix/install-nix-action@v30
+        with:
+          github_access_token: ${{ secrets.TOKEN }}
+      -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
