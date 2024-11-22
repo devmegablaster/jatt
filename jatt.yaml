@@ -1,0 +1,26 @@
+baseURL: "http://localhost:8000"
+title: devmegablaster | Ojas Tyagi
+author: Ojas Tyagi
+theme: dark
+contentDir: content
+outputDir: public
+
+nav:
+  items:
+    - label: Home
+      url: /
+    - label: Posts
+      url: /posts
+    - label: About
+      url: /about
+
+home:
+  name: Ojas Tyagi
+  description: "Software Developer | Backend Engineer"
+  social:
+    - name: Twitter
+      url: "https://twitter.com/ojastyagi"
+      icon: twitter.svg
+    - name: GitHub
+      url: "https://github.com/devmegablaster"
+      icon: github.png
