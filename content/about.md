@@ -35,11 +35,12 @@ This is _italics_, this is **bold**, this is **underline**, and this is ~~strike
 
 Here's how to include an image with alt text and a title:
 
-![Alt text for screen readers](https://assets.digitalocean.com/logos/DO_Logo_horizontal_blue.png "DigitalOcean Logo")
+![Alt text for screen readers](https://assets.digitalocean.com/logos/DO_Logo_horizontal_blue.png)
+Caption for the image
 
 _We also support some extra syntax for setting the width, height and alignment of images. You can provide pixels (`200`/`200px`), or a percentage (`50%`), for the width/height. The alignment can be either `left` or `right`, with images being centered by default. These settings are all optional._
 
-![](https://assets.digitalocean.com/public/mascot.png){ width=200 height=131 align=left }
+![](https://assets.digitalocean.com/public/mascot.png)
 
 Use horizontal rules to break up long sections:
 
@@ -78,77 +79,69 @@ server {
 
 Examples can have line numbers, and every code block has a 'Copy' button to copy just the code:
 
-```line_numbers,js
-const test = 'hello';
-const other = 'world';
-console.log(test, other);
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, world!")
+}
 ```
 
 Here's output from a command with a secondary label:
 
-```
-[secondary_label Output]
-Could not connect to Redis at 127.0.0.1:6379: Connection refused
-```
-
 This is a non-root user command example:
 
-```command
-sudo apt-get update
-sudo apt-get install python3
-```
-
-This is a root command example:
-
-```super_user
+```bash
 adduser sammy
 shutdown
 ```
 
 This is a custom prefix command example:
 
-```custom_prefix(mysql>)
+```sql
 FLUSH PRIVILEGES;
 SELECT * FROM articles;
 ```
 
 A custom prefix can contain a space by using `\s`:
 
-```custom_prefix((my-server)\smysql>)
+```sql
 FLUSH PRIVILEGES;
 SELECT * FROM articles;
 ```
 
 Indicate where commands are being run with environments:
 
-```command
+```bash
 [environment local]
 ssh root@server_ip
 ```
 
-```command
+```bash
 [environment second]
 echo "Secondary server"
 ```
 
-```command
+```bash
 [environment third]
 echo "Tertiary server"
 ```
 
-```command
+```bash
 [environment fourth]
 echo "Quaternary server"
 ```
 
-```command
+```bash
 [environment fifth]
 echo "Quinary server"
 ```
 
 And all of these can be combined together, with a language for syntax highlighting as well as a line prefix (line numbers, command, custom prefix, etc.), and even an environment and label:
 
-```line_numbers,html
+```html
 [environment second]
 [label index.html]
 <html>

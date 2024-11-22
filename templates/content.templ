@@ -2,6 +2,7 @@ package templates
 
 templ Content(content string) {
 	<div class="w-9/12 mx-auto">
+		<link rel="stylesheet" href="style.css"/>
 		@templ.Raw(content)
 	</div>
 }

@@ -1,4 +1,4 @@
-<html><head><title>devmegablaster | Ojas Tyagi</title><link rel="stylesheet" href="/style.css"><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script><!-- and it's easy to individually load additional languages --><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></head><body class="w-9/12 mx-auto h-screen flex flex-col"><div class="flex md:flex-row flex-col justify-between items-center pt-2"><div class="flex space-x-3 items-center"><a href="/" class="text-white text-2xl font-bold">devmegablaster</a></div><div class="flex justify-center items-center md:space-x-4 space-x-2"><a href="/" class="text-white text-base p-3 hover:underline underline-offset-2">Home</a><a href="/posts" class="text-white text-base p-3 hover:underline underline-offset-2">Posts</a><a href="/about" class="text-white text-base p-3 hover:underline underline-offset-2">About</a></div></div><div class="w-9/12 mx-auto"><h1>Title Header (H1 header)</h1>
+<html><head><title>devmegablaster | Ojas Tyagi</title><link rel="stylesheet" href="/style.css"><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script><!-- and it's easy to individually load additional languages --><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></head><body class="w-9/12 mx-auto h-screen flex flex-col"><div class="flex md:flex-row flex-col justify-between items-center pt-2 pb-4"><div class="flex space-x-3 items-center"><a href="/" class="text-white text-2xl font-bold">devmegablaster</a></div><div class="flex justify-center items-center md:space-x-4 space-x-2"><a href="/" class="text-white text-base p-3 hover:underline underline-offset-2">Home</a><a href="/posts" class="text-white text-base p-3 hover:underline underline-offset-2">Posts</a><a href="/about" class="text-white text-base p-3 hover:underline underline-offset-2">About</a></div></div><div class="w-9/12 mx-auto"><link rel="stylesheet" href="style.css"><h1>Title Header (H1 header)</h1>
 <h3>Introduction (H3 header)</h3>
 <p>This is some placeholder text to show examples of Markdown formatting.
 We have <a href="https://github.com/do-community/do-article-templates">a full article template</a> you can use when writing a DigitalOcean article.
@@ -29,9 +29,14 @@ Please refer to our style and formatting guidelines for more detailed explanatio
 </ul>
 </blockquote>
 <p>Here's how to include an image with alt text and a title:</p>
-<p><img src="https://assets.digitalocean.com/logos/DO_Logo_horizontal_blue.png" alt="Alt text for screen readers" title="DigitalOcean Logo"></p>
+<figure>
+<img src="https://assets.digitalocean.com/logos/DO_Logo_horizontal_blue.png" alt="Alt text for screen readers">
+<figcaption><p>Caption for the image</p></figcaption>
+</figure>
 <p><em>We also support some extra syntax for setting the width, height and alignment of images. You can provide pixels (<code>200</code>/<code>200px</code>), or a percentage (<code>50%</code>), for the width/height. The alignment can be either <code>left</code> or <code>right</code>, with images being centered by default. These settings are all optional.</em></p>
-<p><img src="https://assets.digitalocean.com/public/mascot.png" alt="">{ width=200 height=131 align=left }</p>
+<figure>
+<img src="https://assets.digitalocean.com/public/mascot.png" alt="">
+</figure>
 <p>Use horizontal rules to break up long sections:</p>
 <p>Rich transformations are also applied:</p>
 <ul>
@@ -58,48 +63,45 @@ server {
 }
 </code></pre>
 <p>Examples can have line numbers, and every code block has a 'Copy' button to copy just the code:</p>
-<pre><code class="language-line_numbers,js">const test = 'hello';
-const other = 'world';
-console.log(test, other);
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Println(&quot;Hello, world!&quot;)
+}
 </code></pre>
 <p>Here's output from a command with a secondary label:</p>
-<pre><code>[secondary_label Output]
-Could not connect to Redis at 127.0.0.1:6379: Connection refused
-</code></pre>
 <p>This is a non-root user command example:</p>
-<pre><code class="language-command">sudo apt-get update
-sudo apt-get install python3
-</code></pre>
-<p>This is a root command example:</p>
-<pre><code class="language-super_user">adduser sammy
+<pre><code class="language-bash">adduser sammy
 shutdown
 </code></pre>
 <p>This is a custom prefix command example:</p>
-<pre><code class="language-custom_prefix(mysql&gt;)">FLUSH PRIVILEGES;
+<pre><code class="language-sql">FLUSH PRIVILEGES;
 SELECT * FROM articles;
 </code></pre>
 <p>A custom prefix can contain a space by using <code>\s</code>:</p>
-<pre><code class="language-custom_prefix((my-server)\smysql&gt;)">FLUSH PRIVILEGES;
+<pre><code class="language-sql">FLUSH PRIVILEGES;
 SELECT * FROM articles;
 </code></pre>
 <p>Indicate where commands are being run with environments:</p>
-<pre><code class="language-command">[environment local]
+<pre><code class="language-bash">[environment local]
 ssh root@server_ip
 </code></pre>
-<pre><code class="language-command">[environment second]
+<pre><code class="language-bash">[environment second]
 echo &quot;Secondary server&quot;
 </code></pre>
-<pre><code class="language-command">[environment third]
+<pre><code class="language-bash">[environment third]
 echo &quot;Tertiary server&quot;
 </code></pre>
-<pre><code class="language-command">[environment fourth]
+<pre><code class="language-bash">[environment fourth]
 echo &quot;Quaternary server&quot;
 </code></pre>
-<pre><code class="language-command">[environment fifth]
+<pre><code class="language-bash">[environment fifth]
 echo &quot;Quinary server&quot;
 </code></pre>
 <p>And all of these can be combined together, with a language for syntax highlighting as well as a line prefix (line numbers, command, custom prefix, etc.), and even an environment and label:</p>
-<pre><code class="language-line_numbers,html">[environment second]
+<pre><code class="language-html">[environment second]
 [label index.html]
 &lt;html&gt;
 &lt;body&gt;

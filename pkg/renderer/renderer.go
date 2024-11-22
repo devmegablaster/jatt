@@ -11,6 +11,7 @@ import (
 	"github.com/devmegablaster/jatt/pkg/reader"
 	"github.com/devmegablaster/jatt/pkg/styles"
 	"github.com/devmegablaster/jatt/templates"
+	figure "github.com/mangoumbrella/goldmark-figure"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
 )
@@ -70,6 +71,7 @@ func (r *Renderer) ContentToHtml(content []byte) []byte {
 	md := goldmark.New(
 		goldmark.WithExtensions(
 			extension.GFM,
+			figure.Figure,
 		),
 	)
 
