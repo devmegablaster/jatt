@@ -33,6 +33,7 @@ type NavItem struct {
 
 type HomeConfig struct {
 	Name        string   `mapstructure:"name"`
+	Image       string   `mapstructure:"image"`
 	Description string   `mapstructure:"description"`
 	Social      []Social `mapstructure:"social"`
 }

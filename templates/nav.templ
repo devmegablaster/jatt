@@ -1,0 +1,24 @@
+package templates
+
+import "github.com/devmegablaster/jatt/internal/config"
+
+templ Nav(navCfg config.NavConfig) {
+	<div class="flex justify-between items-center pt-2">
+		<div class="flex space-x-3 items-center">
+			<a href="/" class="text-white text-2xl font-bold">
+				devmegablaster
+			</a>
+		</div>
+		<div class="flex justify-center items-center space-x-4">
+			for _, navItem := range navCfg.NavItems {
+				@NavButton(navItem)
+			}
+		</div>
+	</div>
+}
+
+templ NavButton(navItem config.NavItem) {
+	<a href={ templ.URL(navItem.Url) } class="text-white text-base p-3 hover:underline underline-offset-2">
+		{ navItem.Label }
+	</a>
+}

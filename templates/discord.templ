@@ -1,0 +1,47 @@
+package templates
+
+templ DiscordStatus() {
+	<div id="discord-status" class="bg-blue-500 h-2 w-2 rounded-full hover:w-20 space-x-2">
+		<div id="discord-status-text" class="text-transparent">Loading</div>
+		<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpnghq.com%2Fwp-content%2Fuploads%2Fwhite-discord-logo-png-png-no-watermark-download-57636-1024x745.png&f=1&nofb=1&ipt=56823f049a2f0b78ced821afe592850482f10e8588d164de00e35cd640e7846b&ipo=images" class="h-5 mr-2"/>
+	</div>
+	<script>
+      function getDiscordStatus() {
+        fetch("https://api.lanyard.rest/v1/users/id")
+          .then(response => response.json())
+          .then(data => {
+            if (data.data.discord_status === "online") {
+              document.getElementById("discord-status").classList.remove("bg-blue-500");
+              document.getElementById("discord-status").classList.add("bg-green-500");
+              document.getElementById("discord-status-text").innerText = "Online";
+            } else if (data.data.discord_status === "dnd") {
+              document.getElementById("discord-status").classList.remove("bg-blue-500");
+              document.getElementById("discord-status").classList.add("bg-red-500");
+              document.getElementById("discord-status-text").innerText = "Do Not Disturb";
+            } else if (data.data.discord_status === "idle") {
+              document.getElementById("discord-status").classList.remove("bg-blue-500");
+              document.getElementById("discord-status").classList.add("bg-yellow-500");
+              document.getElementById("discord-status-text").innerText = "Idle";
+            } else {
+              document.getElementById("discord-status").classList.remove("bg-blue-500");
+              document.getElementById("discord-status").classList.add("bg-gray-500");
+              document.getElementById("discord-status-text").innerText = "Offline";
+            }
+          });
+      }
+
+      getDiscordStatus()
+
+      const statusElement = document.getElementById("discord-status");
+      const textElement = document.getElementById("discord-status-text");
+
+      statusElement.addEventListener("mouseenter", () => {
+        const textWidth = textElement.scrollWidth; // Get the full width of the text
+        statusElement.style.width = `${textWidth + 50}px`; // Set it as the new width
+      });
+
+      statusElement.addEventListener("mouseleave", () => {
+        statusElement.style.width = "1rem"; // Reset to the initial width
+      });
+  </script>
+}

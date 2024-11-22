@@ -1,0 +1,18 @@
+package templates
+
+import "github.com/devmegablaster/jatt/pkg/reader"
+
+templ Listing(listing []reader.ListingItem) {
+	<div class="flex flex-col space-y-4">
+		for _, item := range listing {
+			@ListingItem(item)
+		}
+	</div>
+}
+
+templ ListingItem(item reader.ListingItem) {
+	<a href={ templ.SafeURL(item.URL) } class="w-full bg-gray-500 rounded p-10 flex flex-col text-white">
+		<p>{ item.Name }</p>
+		<p>{ item.Date } </p>
+	</a>
+}

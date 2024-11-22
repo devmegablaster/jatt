@@ -1,0 +1,18 @@
+package templates
+
+import "github.com/devmegablaster/jatt/internal/config"
+
+templ Home(cfg config.HomeConfig) {
+	<div class="flex flex-col items-center justify-ceter space-y-3 my-auto text-center">
+		<img src={ cfg.Image } class="rounded-full w-32 h-32"/>
+		<h1 class="text-4xl font-bold">{ cfg.Name }</h1>
+		<p class="text-lg">{ cfg.Description }</p>
+		<div class="flex space-x-4">
+			for _, social := range cfg.Social {
+				<a href={ templ.SafeURL(social.URL) } class="text-blue-500 hover:text-blue-700">
+					<img src={ social.Icon } class="w-6 h-6"/>
+				</a>
+			}
+		</div>
+	</div>
+}
