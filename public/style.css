@@ -1,0 +1,62 @@
+body {
+  background-color: #1D1E20;
+}
+
+h1 {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: #888 !important;
+}
+
+h2 {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  color: #888 !important;
+}
+
+p {
+  font-size: 1.2rem !important;
+  color: #888 !important;
+}
+
+code {
+  font-size: 1.2rem !important;
+  background-color: #1D1E20 !important;
+}
+
+a {
+  text-decoration: underline !important;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #1D1E20;
+}
+
+#discord-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  transition: all 0.35s;
+  overflow: hidden;
+}
+
+#discord-status:hover {
+  height: 1.8rem;
+}
+
+#discord-status-text {
+  white-space: nowrap;
+  width: fit-content;
+  padding: 1rem 0rem 1rem 0.2rem;
+  transform: translateY(1rem);
+}
+
+#discord-status:hover #discord-status-text {
+  color: white;
+  transform: translateY(0);
+}

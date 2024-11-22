@@ -42,7 +42,7 @@ func (r *Renderer) Render(files []reader.File) []RenderedFile {
 		switch file.FrontMatter["layout"] {
 		case "home":
 			content := templates.Home(r.cfg.HomeConfig)
-			component = templates.DefaultNoScroll(r.cfg.SiteConfig, r.cfg.NavConfig, content)
+			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, content)
 		case "listing":
 			listing := templates.Listing(file.Listing)
 			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, listing)

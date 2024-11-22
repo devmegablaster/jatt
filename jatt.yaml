@@ -16,11 +16,15 @@ nav:
 
 home:
   name: Ojas Tyagi
-  description: "Software Developer | Backend Engineer"
+  description: "Software Developer"
+  image: "profile.jpeg"
   social:
     - name: Twitter
       url: "https://twitter.com/ojastyagi"
       icon: twitter.svg
     - name: GitHub
       url: "https://github.com/devmegablaster"
-      icon: github.png
+      icon: github.svg
+    - name: LinkedIn
+      icon: linkedin.svg
+      url: "https://www.linkedin.com/in/ojastyagi/"
