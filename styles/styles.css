@@ -67,7 +67,8 @@ figure img {
 }
 
 .hljs {
-  @apply block overflow-x-auto p-2 bg-[#1D1E20];
+  background-color: #2E2E33 !important;
+  @apply block overflow-x-auto p-2 rounded-md;
 }
 
 .top-container {
@@ -150,7 +151,7 @@ a:visted {
   @apply flex flex-col space-y-4 flex-grow;
 }
 
-.listing-item-containter {
+.listing-item-container {
   @apply w-full bg-gray-500 rounded p-10 flex flex-col text-white;
 }
 
