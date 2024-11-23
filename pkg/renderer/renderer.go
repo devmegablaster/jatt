@@ -45,7 +45,7 @@ func (r *Renderer) Render(files []reader.File) []RenderedFile {
 			content := templates.Home(r.cfg.HomeConfig)
 			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, content)
 		case "listing":
-			listing := templates.Listing(file.Listing)
+			listing := templates.Listing(string(html), file.Listing)
 			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, listing)
 		default:
 			content := templates.Content(string(html))

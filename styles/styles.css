@@ -148,11 +148,19 @@ a:visted {
 }
 
 .listing-container {
-  @apply flex flex-col space-y-4 flex-grow;
+  @apply flex flex-col space-y-4 flex-grow sm:w-8/12 w-11/12 mx-auto;
 }
 
 .listing-item-container {
-  @apply w-full bg-gray-500 rounded p-10 flex flex-col text-white;
+  @apply w-full bg-[#2E2E33] rounded-md px-6 py-4 flex flex-col text-white space-y-1;
+}
+
+.listing-item-container h3 {
+  @apply text-2xl font-bold m-0;
+}
+
+.listing-item-container p {
+  @apply text-sm text-gray-500 m-0;
 }
 
 #discord-status {

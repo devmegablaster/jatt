@@ -18,9 +18,11 @@ type Reader struct {
 }
 
 type ListingItem struct {
-	Name string
-	URL  string
-	Date string
+	Name        string
+	Title       string
+	Description string
+	URL         string
+	Date        string
 }
 
 type File struct {
@@ -181,9 +183,11 @@ func (r *Reader) GenerateListing(fileStruct File) []ListingItem {
 
 		fm := r.ReadFrontMatter(buf)
 		files = append(files, ListingItem{
-			Name: strings.Split(file.Name(), ".")[0],
-			URL:  strings.Replace(dirPath+"/"+strings.Split(file.Name(), ".")[0], "content", "", 1),
-			Date: fm["date"],
+			Name:        strings.Split(file.Name(), ".")[0],
+			URL:         strings.Replace(dirPath+"/"+strings.Split(file.Name(), ".")[0], "content", "", 1),
+			Date:        fm["date"],
+			Title:       fm["title"],
+			Description: fm["description"],
 		})
 	}
 
