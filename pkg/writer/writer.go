@@ -63,7 +63,6 @@ func (w *Writer) WriteFile(file renderer.RenderedFile) error {
 	f, err := os.Create(outputDir + "/" + file.Name + ".html")
 	if err != nil {
 		if os.IsNotExist(err) {
-			fmt.Println("Creating directory for " + strings.Split(file.Name, "/")[0])
 			err := os.MkdirAll(outputDir+"/"+strings.Split(file.Name, "/")[0], 0755)
 			f, err = os.Create(outputDir + "/" + file.Name + ".html")
 			if err != nil {
