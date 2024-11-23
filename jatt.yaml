@@ -19,14 +19,11 @@ home:
   description: "Software Developer"
   image: "profile.jpeg"
   social:
-    - name: Twitter
+    - name: twitter
       url: "https://twitter.com/ojastyagi"
-      icon: twitter.svg
-    - name: GitHub
+    - name: github
       url: "https://github.com/devmegablaster"
-      icon: github.svg
-    - name: LinkedIn
-      icon: linkedin.svg
+    - name: linkedin
       url: "https://www.linkedin.com/in/ojastyagi/"
   buttons:
     - name: Posts

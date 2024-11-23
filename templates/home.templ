@@ -11,8 +11,8 @@ templ Home(cfg config.HomeConfig) {
 		</div>
 		<div class="flex space-x-4">
 			for _, social := range cfg.Social {
-				<a href={ templ.SafeURL(social.URL) } class="text-blue-500 hover:text-blue-700">
-					<img src={ social.Icon } class="w-6 h-6"/>
+				<a href={ templ.SafeURL(social.URL) } class="text-blue-500 hover:text-blue-700 h-6 w-6">
+					@Svg(social.Name)
 				</a>
 			}
 		</div>
