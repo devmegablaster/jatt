@@ -3,22 +3,22 @@ package templates
 import "github.com/devmegablaster/jatt/internal/config"
 
 templ Home(cfg config.HomeConfig) {
-	<div class="flex flex-col items-center justify-center space-y-4 my-auto text-center flex-grow">
-		<img src={ cfg.Image } class="rounded-full w-32 h-32"/>
-		<div class="flex flex-col items-center space-y-2">
-			<h1 class="text-4xl font-bold text-white">{ cfg.Name }</h1>
-			<p class="text-lg text-white">{ cfg.Description }</p>
+	<div class="home-container">
+		<img src={ cfg.Image } class="home-image"/>
+		<div class="name-description-container">
+			<h1 class="home-name">{ cfg.Name }</h1>
+			<p class="home-description">{ cfg.Description }</p>
 		</div>
-		<div class="flex space-x-4">
+		<div class="home-social-container">
 			for _, social := range cfg.Social {
-				<a href={ templ.SafeURL(social.URL) } class="text-blue-500 hover:text-blue-700 h-6 w-6">
+				<a href={ templ.SafeURL(social.URL) }>
 					@Svg(social.Name)
 				</a>
 			}
 		</div>
-		<div class="flex space-x-6 pt-4">
+		<div class="home-button-container">
 			for _, button := range cfg.Buttons {
-				<a href={ templ.SafeURL(button.URL) } class="bg-[#414244] px-4 py-2 rounded-md text-white">
+				<a href={ templ.SafeURL(button.URL) }>
 					{ button.Name }
 				</a>
 			}

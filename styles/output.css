@@ -1,8 +1,4 @@
-package templates
-
-templ GlobalStyles() {
-	<style>
-  body {
+body {
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -368,5 +364,4 @@ a:visted {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-  </style>
-}
+

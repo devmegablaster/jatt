@@ -29,7 +29,7 @@ func Footer() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<footer class=\"w-full text-white py-2 text-center\">©\tPowered by <a href=\"https://github.com/devmegablaster/jatt\" class=\"underline underline-offset-2\">Jatt</a></footer>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<footer>©\tPowered by <a href=\"https://github.com/devmegablaster/jatt\">Jatt</a></footer>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

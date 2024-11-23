@@ -1,0 +1,175 @@
+body {
+  @apply bg-[#1D1E20] text-white w-9/12 mx-auto h-[98vh] flex flex-col font-sans;
+}
+
+a {
+  @apply no-underline;
+}
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg;
+}
+
+ol {
+  @apply list-decimal list-outside pl-4 m-0;
+}
+
+ol li {
+  @apply list-decimal list-outside pl-4 m-0;
+}
+
+ol li:not(:last-child) {
+  @apply mb-2;
+}
+
+ul {
+  @apply list-disc list-outside pl-4 m-0;
+}
+
+ul li {
+  @apply list-disc list-outside pl-4 m-0;
+}
+
+ul li:not(:last-child) {
+  @apply mb-2;
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  @apply flex flex-col items-center justify-center w-full my-4
+}
+
+figcaption {
+  @apply text-sm text-gray-500 mt-2
+}
+
+image {
+  @apply max-w-[75%] mx-auto;
+}
+
+.hljs {
+  @apply block overflow-x-auto p-2 bg-[#1D1E20];
+}
+
+.top-container {
+  @apply flex md:flex-row flex-col justify-between items-center pt-2 pb-4
+}
+
+.nav-title {
+  @apply text-white text-2xl font-bold;
+}
+
+.nav-container {
+  @apply flex justify-center items-center md:space-x-4 space-x-2
+}
+
+.nav-container a {
+  @apply text-white text-base p-3 hover:underline underline-offset-2
+}
+
+footer {
+  @apply w-full text-white py-2 text-center;
+}
+
+footer a {
+  @apply underline underline-offset-2 text-white;
+}
+
+a:visted {
+  @apply underline underline-offset-2 text-white;
+}
+
+.content-raw a {
+  @apply underline underline-offset-2 text-white;
+}
+
+.content-raw a:visted {
+  @apply underline underline-offset-2 text-white;
+}
+
+.content-raw {
+  @apply w-9/12 mx-auto;
+}
+
+.home-container {
+  @apply flex flex-col items-center justify-center space-y-4 my-auto text-center flex-grow;
+}
+
+.home-image {
+  @apply rounded-full w-32 h-32
+}
+
+.name-description-container {
+  @apply flex flex-col items-center space-y-2;
+}
+
+.home-name {
+  @apply text-4xl font-bold text-white m-0;
+}
+
+.home-description {
+  @apply text-lg text-white m-0;
+}
+
+.home-social-container {
+  @apply flex space-x-4;
+}
+
+.home-social-container a {
+  @apply text-blue-500 hover:text-blue-700 h-6 w-6;
+}
+
+.home-button-container {
+  @apply flex space-x-6 pt-4;
+}
+
+.home-button-container a {
+  @apply bg-[#414244] px-4 py-2 rounded-md text-white;
+}
+
+.listing-container {
+  @apply flex flex-col space-y-4 flex-grow;
+}
+
+.listing-item-containter {
+  @apply w-full bg-gray-500 rounded p-10 flex flex-col text-white;
+}
+
+#discord-status {
+  @apply flex items-center justify-center w-4 h-4 transition-all overflow-hidden;
+}
+
+#discord-status:hover {
+  @apply h-7;
+}
+
+#discord-status-text {
+  transform: translateY(1rem);
+  @apply whitespace-nowrap w-fit p-2;
+}
+
+#discord-status:hover #discord-status-text {
+  transform: translateY(0);
+  @apply text-white;
+}
+
