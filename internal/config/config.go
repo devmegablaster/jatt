@@ -22,6 +22,7 @@ type SiteConfig struct {
 }
 
 type NavConfig struct {
+	Title    string    `mapstructure:"title"`
 	NavItems []NavItem `mapstructure:"items"`
 }
 

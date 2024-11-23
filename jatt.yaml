@@ -1,11 +1,12 @@
-baseURL: "http://localhost:8000"
-title: devmegablaster | Ojas Tyagi
+baseURL: "https://megablaster.dev"
+title: Ojas Tyagi
 author: Ojas Tyagi
 theme: dark
 contentDir: content
 outputDir: public
 
 nav:
+  title: Ojas Tyagi
   items:
     - label: Home
       url: /

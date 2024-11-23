@@ -5,7 +5,7 @@ import "github.com/devmegablaster/jatt/internal/config"
 templ Nav(navCfg config.NavConfig) {
 	<div class="top-container">
 		<a href="/" class="nav-title">
-			devmegablaster
+			{ navCfg.Title }
 		</a>
 		<div class="nav-container">
 			for _, navItem := range navCfg.NavItems {
