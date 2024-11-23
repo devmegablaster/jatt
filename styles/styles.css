@@ -108,7 +108,7 @@ a:visted {
 }
 
 .content-raw {
-  @apply w-9/12 mx-auto;
+  @apply w-9/12 mx-auto flex-grow;
 }
 
 .home-container {

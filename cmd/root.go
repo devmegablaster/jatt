@@ -40,4 +40,5 @@ func Execute() {
 
 func init() {
 	rootCmd.AddCommand(versionCommand)
+	rootCmd.AddCommand(initJatt)
 }

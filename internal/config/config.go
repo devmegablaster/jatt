@@ -8,9 +8,9 @@ import (
 )
 
 type JattConfig struct {
-	SiteConfig SiteConfig `mapstructure:",squash"`
-	NavConfig  NavConfig  `mapstructure:"nav"`
-	HomeConfig HomeConfig `mapstructure:"home"`
+	SiteConfig SiteConfig `mapstructure:",squash" yaml:",inline"`
+	NavConfig  NavConfig  `mapstructure:"nav" yaml:"nav"`
+	HomeConfig HomeConfig `mapstructure:"home" yaml:"home"`
 }
 
 type SiteConfig struct {
@@ -23,25 +23,23 @@ type SiteConfig struct {
 
 type NavConfig struct {
 	Title    string    `mapstructure:"title"`
-	NavItems []NavItem `mapstructure:"items"`
+	NavItems []NavItem `mapstructure:"items" yaml:"items"`
 }
 
 type NavItem struct {
-	Label  string `mapstructure:"label"`
-	Url    string `mapstructure:"url"`
-	Weight int    `mapstructure:"weight"`
+	Label string `mapstructure:"label"`
+	Url   string `mapstructure:"url"`
 }
 
 type HomeConfig struct {
 	Name        string   `mapstructure:"name"`
 	Image       string   `mapstructure:"image"`
 	Description string   `mapstructure:"description"`
-	Social      []Social `mapstructure:"social"`
-	Buttons     []Button `mapstructure:"buttons"`
+	Social      []Social `mapstructure:"social" yaml:"social"`
+	Buttons     []Button `mapstructure:"buttons" yaml:"buttons"`
 }
 
 type Social struct {
-	Icon string `mapstructure:"icon"`
 	Name string `mapstructure:"name"`
 	URL  string `mapstructure:"url"`
 }
@@ -65,4 +63,50 @@ func NewConfig() JattConfig {
 	}
 
 	return cfg
+}
+
+func NewConfigTemplate() JattConfig {
+	return JattConfig{
+		SiteConfig: SiteConfig{
+			Title:      "Jatt Site",
+			Author:     "Author",
+			Theme:      "dark",
+			ContentDir: "content",
+			OutputDir:  "public",
+		},
+		NavConfig: NavConfig{
+			Title: "Jatt",
+			NavItems: []NavItem{
+				{
+					Label: "Home",
+					Url:   "/",
+				},
+				{
+					Label: "About",
+					Url:   "/about",
+				},
+			},
+		},
+		HomeConfig: HomeConfig{
+			Name:        "Jatt",
+			Image:       "https://via.placeholder.com/150",
+			Description: "Jatt Site",
+			Social: []Social{
+				{
+					Name: "github",
+					URL:  "https://github.com",
+				},
+			},
+			Buttons: []Button{
+				{
+					Name: "About",
+					URL:  "/about",
+				},
+				{
+					Name: "Jatt",
+					URL:  "https://github.com/devmegablaster/jatt",
+				},
+			},
+		},
+	}
 }
