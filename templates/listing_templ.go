@@ -40,7 +40,7 @@ func Listing(content string, listing []reader.ListingItem) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		if len(listing) == 0 {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h2>No posts found</h2>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h3 style=\"color: #6b7280; text-align: center;\">No posts found</h3>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

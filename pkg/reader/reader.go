@@ -32,6 +32,15 @@ type File struct {
 	Listing     []ListingItem
 }
 
+type FrontMatter struct {
+	Layout      string   `yaml:"layout"`
+	Title       string   `yaml:"title"`
+	Description string   `yaml:"description"`
+	Date        string   `yaml:"date"`
+	Tags        []string `yaml:"tags"`
+	Draft       bool     `yaml:"draft"`
+}
+
 func NewReader(cfg config.JattConfig) *Reader {
 	return &Reader{
 		Cfg: cfg,
@@ -181,7 +190,10 @@ func (r *Reader) GenerateListing(fileStruct File) []ListingItem {
 			}
 		}
 
-		fm := r.ReadFrontMatter(buf)
+		fm := r.ReadFrontMatter(buf.Bytes())
+		if fm.Draft {
+			continue
+		}
 		files = append(files, ListingItem{
 			Name:        strings.Split(file.Name(), ".")[0],
 			URL:         strings.Replace(dirPath+"/"+strings.Split(file.Name(), ".")[0], "content", "", 1),
