@@ -1,5 +1,5 @@
 body {
-  @apply bg-[#1D1E20] text-white sm:w-8/12 w-11/12 mx-auto h-screen flex flex-col font-sans my-0;
+  @apply bg-white text-black dark:bg-[#1D1E20] dark:text-white sm:w-8/12 w-11/12 mx-auto h-screen flex flex-col font-sans my-0;
 }
 
 a {
@@ -28,6 +28,10 @@ h5 {
 
 p {
   @apply sm:text-base text-sm;
+}
+
+svg {
+  @apply text-black dark:text-white;
 }
 
 ol {
@@ -83,8 +87,16 @@ hr {
   @apply flex sm:flex-row flex-col justify-between sm:items-center items-start pt-2 pb-4;
 }
 
+.nav-title-container {
+  @apply flex items-center space-x-3;
+}
+
+.theme-changer {
+  @apply h-6 w-6 cursor-pointer flex items-center justify-center;
+}
+
 .nav-title {
-  @apply text-white sm:text-2xl text-xl font-bold;
+  @apply dark:text-white text-black sm:text-2xl text-xl font-bold;
 }
 
 .nav-container {
@@ -92,7 +104,7 @@ hr {
 }
 
 .nav-container a {
-  @apply text-white text-base hover:underline underline-offset-2;
+  @apply dark:text-white text-black text-base hover:underline underline-offset-2;
 }
 
 .post-matter {
@@ -109,7 +121,7 @@ hr {
 
 .post-seperator {
   margin-top: 25px !important;
-  @apply w-full h-0.5 bg-gray-500;
+  @apply w-full h-0.5 bg-gray-700 dark:bg-gray-500;
 }
 
 .tags-container {
@@ -121,27 +133,27 @@ hr {
 }
 
 .tag {
-  @apply bg-neutral-600 px-2 py-1 rounded-md text-white sm:text-sm text-xs;
+  @apply dark:bg-neutral-600 bg-gray-300 px-2 py-1 rounded-md dark:text-white text-black sm:text-sm text-xs;
 }
 
 footer {
-  @apply w-full text-white py-8 text-center;
+  @apply w-full dark:text-white text-black py-4 text-center sm:text-base text-sm;
 }
 
 footer a {
-  @apply underline underline-offset-2 text-white;
+  @apply underline underline-offset-2 dark:text-white text-black sm:text-base text-sm;
 }
 
 a:visted {
-  @apply underline underline-offset-2 text-white;
+  @apply underline underline-offset-2 dark:text-white text-black;
 }
 
 .content-raw a {
-  @apply underline underline-offset-2 text-white;
+  @apply underline underline-offset-2 dark:text-white text-black;
 }
 
 .content-raw a:visted {
-  @apply underline underline-offset-2 text-white;
+  @apply underline underline-offset-2  dark:text-white text-black;
 }
 
 .content-raw {
@@ -161,11 +173,11 @@ a:visted {
 }
 
 .home-name {
-  @apply sm:text-4xl text-3xl font-bold text-white m-0;
+  @apply sm:text-4xl text-3xl font-bold dark:text-white text-black m-0;
 }
 
 .home-description {
-  @apply text-lg text-white m-0;
+  @apply text-lg dark:text-white text-black m-0;
 }
 
 .home-social-container {
@@ -173,7 +185,7 @@ a:visted {
 }
 
 .home-social-container a {
-  @apply text-blue-500 hover:text-blue-700 sm:h-6 sm:w-6 h-5 w-5;
+  @apply sm:h-6 sm:w-6 h-5 w-5;
 }
 
 .home-button-container {
@@ -181,7 +193,7 @@ a:visted {
 }
 
 .home-button-container a {
-  @apply bg-[#414244] px-4 py-2 rounded-md text-white;
+  @apply dark:bg-[#414244] bg-gray-200 px-4 py-2 rounded-md dark:text-white text-black;
 }
 
 .listing-container {
@@ -189,7 +201,7 @@ a:visted {
 }
 
 .listing-item-container {
-  @apply w-auto bg-[#2E2E33] rounded-md px-6 py-4 flex flex-col text-white space-y-1 relative;
+  @apply w-auto dark:bg-[#2E2E33] bg-gray-200 rounded-md px-6 py-4 flex flex-col dark:text-white text-black space-y-1 relative;
 }
 
 .listing-item-container h3 {

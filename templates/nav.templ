@@ -4,9 +4,12 @@ import "github.com/devmegablaster/jatt/internal/config"
 
 templ Nav(navCfg config.NavConfig) {
 	<div class="top-container">
-		<a href="/" class="nav-title">
-			{ navCfg.Title }
-		</a>
+		<div class="nav-title-container">
+			<a href="/" class="nav-title">
+				{ navCfg.Title }
+			</a>
+			@ThemeChanger()
+		</div>
 		<div class="nav-container">
 			for _, navItem := range navCfg.NavItems {
 				@NavButton(navItem)
