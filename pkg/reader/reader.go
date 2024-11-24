@@ -9,6 +9,7 @@ import (
 
 	"github.com/devmegablaster/jatt/internal/config"
 	"github.com/devmegablaster/jatt/pkg/styles"
+	"gopkg.in/yaml.v3"
 )
 
 // TODO: Improve error handling and logging
@@ -23,12 +24,13 @@ type ListingItem struct {
 	Description string
 	URL         string
 	Date        string
+	Tags        []string
 }
 
 type File struct {
 	Name        string
 	Content     []byte
-	FrontMatter map[string]string
+	FrontMatter FrontMatter
 	Listing     []ListingItem
 }
 
@@ -96,7 +98,7 @@ func (r *Reader) ReadDir(dirPath string) []File {
 			FrontMatter: fm,
 		}
 
-		if fm["layout"] == "listing" {
+		if fm.Layout == "listing" {
 			listingItem := r.GenerateListing(fileStruct)
 			fileStruct.Listing = listingItem
 		}
@@ -109,45 +111,21 @@ func (r *Reader) ReadDir(dirPath string) []File {
 	return files
 }
 
-func (r *Reader) ReadFrontMatter(buf []byte) map[string]string {
-	frontMatter := make(map[string]string)
-
-	if buf[0] != '-' || buf[1] != '-' || buf[2] != '-' {
-		return frontMatter
+func (r *Reader) ReadFrontMatter(buf []byte) FrontMatter {
+	strBuf := string(buf)
+	if !strings.HasPrefix(strBuf, "---") {
+		return FrontMatter{}
 	}
 
-	buf = buf[4:]
-	for {
-		if buf[0] == '-' && buf[1] == '-' && buf[2] == '-' {
-			break
-		}
+	fmBuf := []byte(strings.Split(strBuf, "---")[1])
+	fm := &FrontMatter{}
 
-		key := []byte{}
-		for {
-			if buf[0] == ':' {
-				break
-			}
-			key = append(key, buf[0])
-			buf = buf[1:]
-		}
-
-		buf = buf[1:]
-		buf = buf[1:]
-		value := []byte{}
-		for {
-			if buf[0] == '\n' {
-				break
-			}
-			value = append(value, buf[0])
-			buf = buf[1:]
-		}
-
-		frontMatter[string(key)] = string(value)
-
-		buf = buf[1:]
+	if err := yaml.Unmarshal(fmBuf, fm); err != nil {
+		fmt.Println(styles.ErrorStyle.Render("Error reading front matter"))
+		os.Exit(1)
 	}
 
-	return frontMatter
+	return *fm
 }
 
 func (r *Reader) GenerateListing(fileStruct File) []ListingItem {
@@ -178,16 +156,10 @@ func (r *Reader) GenerateListing(fileStruct File) []ListingItem {
 		}
 		defer f.Close()
 
-		buf := make([]byte, 1024)
-		for {
-			n, err := f.Read(buf)
-			if err != nil && err != io.EOF {
-				fmt.Println(styles.ErrorStyle.Render("Error reading file " + file.Name()))
-				os.Exit(1)
-			}
-			if n == 0 {
-				break
-			}
+		buf := bytes.Buffer{}
+		if _, err = io.Copy(&buf, f); err != nil {
+			fmt.Println(styles.ErrorStyle.Render("Error reading file " + file.Name()))
+			os.Exit(1)
 		}
 
 		fm := r.ReadFrontMatter(buf.Bytes())
@@ -197,9 +169,10 @@ func (r *Reader) GenerateListing(fileStruct File) []ListingItem {
 		files = append(files, ListingItem{
 			Name:        strings.Split(file.Name(), ".")[0],
 			URL:         strings.Replace(dirPath+"/"+strings.Split(file.Name(), ".")[0], "content", "", 1),
-			Date:        fm["date"],
-			Title:       fm["title"],
-			Description: fm["description"],
+			Date:        fm.Date,
+			Title:       fm.Title,
+			Description: fm.Description,
+			Tags:        fm.Tags,
 		})
 	}
 

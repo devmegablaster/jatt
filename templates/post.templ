@@ -1,0 +1,17 @@
+package templates
+
+import "github.com/devmegablaster/jatt/pkg/reader"
+
+templ Post(frontMatter reader.FrontMatter, content string) {
+	<div class="post-matter">
+		<h1>{ frontMatter.Title }</h1>
+		<p>{ frontMatter.Date }</p>
+		<div class="tags-container">
+			for _, tag := range frontMatter.Tags {
+				<span class="tag">{ tag }</span>
+			}
+		</div>
+		<div class="post-seperator"></div>
+	</div>
+	@Content(content)
+}

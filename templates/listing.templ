@@ -19,5 +19,10 @@ templ ListingItem(item reader.ListingItem) {
 		<h3>{ item.Title }</h3>
 		<p>{ item.Description }</p>
 		<p>{ item.Date } </p>
+		<div class="tags-container-listing">
+			for _, item := range item.Tags {
+				<span class="tag">{ item }</span>
+			}
+		</div>
 	</a>
 }

@@ -1,5 +1,5 @@
 body {
-  @apply bg-[#1D1E20] text-white sm:w-8/12 w-11/12 mx-auto h-[98vh] flex flex-col font-sans;
+  @apply bg-[#1D1E20] text-white sm:w-8/12 w-11/12 mx-auto h-screen flex flex-col font-sans my-0;
 }
 
 a {
@@ -66,6 +66,10 @@ figure img {
   @apply max-w-[75%] mx-auto;
 }
 
+hr {
+  @apply border-t border-gray-500 my-4 w-full;
+}
+
 .hljs {
   background-color: #2E2E33 !important;
   @apply block overflow-x-auto p-2 rounded-md;
@@ -85,6 +89,35 @@ figure img {
 
 .nav-container a {
   @apply text-white text-base hover:underline underline-offset-2;
+}
+
+.post-matter {
+  @apply sm:w-8/12 w-11/12 mx-auto flex flex-col space-y-2
+}
+
+.post-matter h1 {
+  @apply sm:text-3xl text-2xl m-0;
+}
+
+.post-matter p {
+  @apply m-0;
+}
+
+.post-seperator {
+  margin-top: 25px !important;
+  @apply w-full h-0.5 bg-gray-500;
+}
+
+.tags-container {
+  @apply flex space-x-2 items-center;
+}
+
+.tags-container-listing {
+  @apply flex space-x-2 items-center sm:absolute sm:top-4 sm:right-4;
+}
+
+.tag {
+  @apply bg-neutral-600 px-2 py-1 rounded-md text-white sm:text-sm text-xs;
 }
 
 footer {
@@ -152,11 +185,11 @@ a:visted {
 }
 
 .listing-item-container {
-  @apply w-full bg-[#2E2E33] rounded-md px-6 py-4 flex flex-col text-white space-y-1;
+  @apply w-auto bg-[#2E2E33] rounded-md px-6 py-4 flex flex-col text-white space-y-1 relative;
 }
 
 .listing-item-container h3 {
-  @apply text-2xl font-bold m-0;
+  @apply sm:text-2xl text-xl font-bold m-0;
 }
 
 .listing-item-container p {

@@ -23,7 +23,7 @@ type Renderer struct {
 type RenderedFile struct {
 	Name        string
 	Html        []byte
-	FrontMatter map[string]string
+	FrontMatter reader.FrontMatter
 }
 
 func NewRenderer(cfg config.JattConfig) *Renderer {
@@ -40,13 +40,16 @@ func (r *Renderer) Render(files []reader.File) []RenderedFile {
 		html := r.ContentToHtml(file.Content)
 		var component templ.Component
 
-		switch file.FrontMatter["layout"] {
+		switch file.FrontMatter.Layout {
 		case "home":
 			content := templates.Home(r.cfg.HomeConfig)
 			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, content)
 		case "listing":
 			listing := templates.Listing(string(html), file.Listing)
 			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, listing)
+		case "post":
+			post := templates.Post(file.FrontMatter, string(html))
+			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, post)
 		default:
 			content := templates.Content(string(html))
 			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, content)
