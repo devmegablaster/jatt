@@ -70,6 +70,10 @@ hr {
   @apply border-t border-gray-500 my-4 w-full;
 }
 
+.active-nav {
+  @apply underline underline-offset-2;
+}
+
 .hljs {
   background-color: #2E2E33 !important;
   @apply block overflow-x-auto p-2 rounded-md;

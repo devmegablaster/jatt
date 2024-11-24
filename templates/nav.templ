@@ -12,11 +12,22 @@ templ Nav(navCfg config.NavConfig) {
 				@NavButton(navItem)
 			}
 		</div>
+		<script>
+      curPath = window.location.pathname;
+      if (curPath == "/") {
+        curPath = "/";
+      } else {
+        if (curPath[curPath.length - 1] == "/") {
+          curPath = curPath.slice(0, curPath.length - 1);
+        }
+      }
+      document.getElementById(curPath).classList.add("active-nav");
+    </script>
 	</div>
 }
 
 templ NavButton(navItem config.NavItem) {
-	<a href={ templ.URL(navItem.Url) }>
+	<a id={ navItem.Url } href={ templ.URL(navItem.Url) }>
 		{ navItem.Label }
 	</a>
 }
