@@ -26,6 +26,10 @@ home:
       url: "https://github.com/devmegablaster"
     - name: linkedin
       url: "https://www.linkedin.com/in/ojastyagi/"
+    - name: mail
+      url: "mailto:ojas@megablaster.dev"
+    - name: monkeytype
+      url: "https://monkeytype.com/profile/ojastyagi"
   buttons:
     - name: Posts
       url: /posts

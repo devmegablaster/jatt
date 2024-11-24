@@ -45,6 +45,16 @@ func Svg(name string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
+		case "mail":
+			templ_7745c5c3_Err = mail().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		case "monkeytype":
+			templ_7745c5c3_Err = monkeytype().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 		case "sun":
 			templ_7745c5c3_Err = sun().Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
@@ -152,7 +162,7 @@ func github() templ.Component {
 	})
 }
 
-func sun() templ.Component {
+func mail() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -171,6 +181,64 @@ func sun() templ.Component {
 		templ_7745c5c3_Var5 := templ.GetChildren(ctx)
 		if templ_7745c5c3_Var5 == nil {
 			templ_7745c5c3_Var5 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 21\" fill=\"none\" stroke=\"currentcolor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z\"></path><polyline points=\"22,6 12,13 2,6\"></polyline></svg>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func monkeytype() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var6 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var6 == nil {
+			templ_7745c5c3_Var6 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" style=\"isolation:isolate\" viewBox=\"-680 -1090 300 400\" stroke-width=\"2\"><g><path fill=\"currentcolor\" d=\"M-430-910C-424.481-910-420-905.519-420-9e2-420-894.481-424.481-890-430-890-435.519-890-440-894.481-440-9e2-440-905.519-435.519-910-430-910z\"></path><path fill=\"currentcolor\" d=\"M-570-910h60C-504.481-910-5e2-905.519-5e2-9e2-5e2-894.481-504.481-890-510-890h-60C-575.519-890-580-894.481-580-9e2-580-905.519-575.519-910-570-910z\"></path><path fill=\"currentcolor\" d=\"M-590-970C-584.481-970-580-965.519-580-960v20C-580-934.481-584.481-930-590-930-595.519-930-6e2-934.481-6e2-940v-20C-6e2-965.519-595.519-970-590-970z\"></path><path fill=\"currentcolor\" d=\"M-639.991-960.515C-639.72-976.836-626.385-990-610-990-602.32-990-595.31-987.108-590-982.355-584.69-987.108-577.68-990-570-990c16.385.0 29.72 13.164 29.991 29.485C-540.001-960.345-540-960.172-540-960v20C-540-934.481-544.481-930-550-930-555.519-930-560-934.481-560-940v-20C-560-965.519-564.481-970-570-970S-580-965.519-580-960v20C-580-934.481-584.481-930-590-930-595.519-930-6e2-934.481-6e2-940v-20C-6e2-965.519-604.481-970-610-970S-620-965.519-620-960v20C-620-934.481-624.481-930-630-930-635.519-930-640-934.481-640-940v-20C-640-960.172-639.996-960.344-639.991-960.515z\"></path><path fill=\"currentcolor\" d=\"M-460-930v30C-460-894.481-464.481-890-470-890-475.519-890-480-894.481-480-9e2v-30h-28.82C-514.99-930-520-934.481-520-940-520-945.519-514.99-950-508.82-950h77.64C-425.01-950-420-945.519-420-940-420-934.481-425.01-930-431.18-930H-460z\"></path><path fill=\"currentcolor\" d=\"M-470-990h40C-424.481-990-420-985.519-420-980-420-974.481-424.481-970-430-970h-40C-475.519-970-480-974.481-480-980-480-985.519-475.519-990-470-990z\"></path><path fill=\"currentcolor\" d=\"M-630-910h20C-604.481-910-6e2-905.519-6e2-9e2-6e2-894.481-604.481-890-610-890h-20C-635.519-890-640-894.481-640-9e2-640-905.519-635.519-910-630-910z\"></path><path fill=\"currentcolor\" d=\"M-515-990h5C-504.481-990-5e2-985.519-5e2-980-5e2-974.481-504.481-970-510-970h-5C-520.519-970-525-974.481-525-980-525-985.519-520.519-990-515-990z\"></path><path fill=\"currentcolor\" d=\"M-660-910h-20v-70c0-27.596 22.404-50 50-50h2e2c27.596.0 50 22.404 50 50v80c0 27.596-22.404 50-50 50H-630c-27.596.0-50-22.404-50-50v-20h20v20c0 16.557 13.443 30 30 30h2e2c16.557.0 30-13.443 30-30v-80c0-16.557-13.443-30-30-30H-630c-16.557.0-30 13.443-30 30v70z\"></path></g></svg>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func sun() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var7 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var7 == nil {
+			templ_7745c5c3_Var7 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentcolor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"5\"></circle><line x1=\"12\" y1=\"1\" x2=\"12\" y2=\"3\"></line><line x1=\"12\" y1=\"21\" x2=\"12\" y2=\"23\"></line><line x1=\"4.22\" y1=\"4.22\" x2=\"5.64\" y2=\"5.64\"></line><line x1=\"18.36\" y1=\"18.36\" x2=\"19.78\" y2=\"19.78\"></line><line x1=\"1\" y1=\"12\" x2=\"3\" y2=\"12\"></line><line x1=\"21\" y1=\"12\" x2=\"23\" y2=\"12\"></line><line x1=\"4.22\" y1=\"19.78\" x2=\"5.64\" y2=\"18.36\"></line><line x1=\"18.36\" y1=\"5.64\" x2=\"19.78\" y2=\"4.22\"></line></svg>")
@@ -197,9 +265,9 @@ func moon() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var6 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var6 == nil {
-			templ_7745c5c3_Var6 = templ.NopComponent
+		templ_7745c5c3_Var8 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var8 == nil {
+			templ_7745c5c3_Var8 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentcolor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z\"></path></svg>")
