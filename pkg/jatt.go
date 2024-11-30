@@ -7,12 +7,14 @@ import (
 	"github.com/devmegablaster/jatt/internal/config"
 	"github.com/devmegablaster/jatt/pkg/reader"
 	"github.com/devmegablaster/jatt/pkg/renderer"
+	"github.com/devmegablaster/jatt/pkg/rss"
 	"github.com/devmegablaster/jatt/pkg/styles"
 	"github.com/devmegablaster/jatt/pkg/writer"
 )
 
 type Jatt struct {
 	reader   *reader.Reader
+	rss      *rss.Rss
 	renderer *renderer.Renderer
 	writer   *writer.Writer
 }
@@ -22,6 +24,7 @@ func NewJatt(cfg config.JattConfig) *Jatt {
 		reader:   reader.NewReader(cfg),
 		renderer: renderer.NewRenderer(cfg),
 		writer:   writer.NewWriter(cfg),
+		rss:      rss.New(cfg),
 	}
 }
 
@@ -29,8 +32,10 @@ func (j *Jatt) Run() {
 	timeStart := time.Now()
 
 	files := j.reader.Read()
+	feed := j.rss.GenerateFeed(files)
 	renderedFiles := j.renderer.Render(files)
-	j.writer.Write(renderedFiles)
+	j.writer.WriteFiles(renderedFiles)
+	j.writer.WriteRSSFeed(feed)
 	j.writer.CopyStatic()
 
 	timeEnd := time.Now()

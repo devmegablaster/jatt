@@ -22,7 +22,7 @@ func NewWriter(cfg config.JattConfig) *Writer {
 	}
 }
 
-func (w *Writer) Write(files []renderer.RenderedFile) {
+func (w *Writer) WriteFiles(files []renderer.RenderedFile) {
 	w.RemoveOldOutput()
 	w.CreateOutputDir()
 
@@ -105,4 +105,15 @@ func (w *Writer) CopyStatic() error {
 	}
 
 	return nil
+}
+
+func (w *Writer) WriteRSSFeed(feed []byte) {
+	outputDir := w.cfg.SiteConfig.OutputDir
+	err := os.WriteFile(outputDir+"/rss.xml", feed, 0644)
+	if err != nil {
+		fmt.Println(styles.ErrorStyle.Render("Error writing RSS feed"))
+		os.Exit(1)
+	}
+
+	fmt.Println(styles.SuccessStyle.Render("Wrote RSS feed"))
 }

@@ -14,11 +14,13 @@ type JattConfig struct {
 }
 
 type SiteConfig struct {
-	Title      string `mapstructure:"title"`
-	Author     string `mapstructure:"author"`
-	Theme      string `mapstructure:"theme"`
-	ContentDir string `mapstructure:"contentDir"`
-	OutputDir  string `mapstructure:"outputDir"`
+	BaseURL     string `mapstructure:"baseURL"`
+	Title       string `mapstructure:"title"`
+	Description string `mapstructure:"description"`
+	Author      string `mapstructure:"author"`
+	Theme       string `mapstructure:"theme"`
+	ContentDir  string `mapstructure:"contentDir"`
+	OutputDir   string `mapstructure:"outputDir"`
 }
 
 type NavConfig struct {

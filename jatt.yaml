@@ -1,5 +1,6 @@
 baseURL: "https://megablaster.dev"
 title: Ojas Tyagi
+description: "Posts on software development, programming, and technology."
 author: Ojas Tyagi
 theme: dark
 contentDir: content

@@ -4,7 +4,11 @@ import "github.com/devmegablaster/jatt/pkg/reader"
 
 templ Listing(content string, listing []reader.ListingItem) {
 	<div class="listing-container">
-		@templ.Raw(content)
+		<div class="listing-container-header">
+			@templ.Raw(content)
+			<a href="/rss.xml" class="rss-link">@Svg("rss")
+</a>
+		</div>
 		if len(listing) == 0 {
 			<h3 style="color: #6b7280; text-align: center;">No posts found</h3>
 		}

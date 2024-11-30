@@ -20,10 +20,10 @@ type Reader struct {
 
 type ListingItem struct {
 	Name        string
-	Title       string
-	Description string
-	URL         string
-	Date        string
+	Title       string `xml:"title"`
+	Description string `xml:"description"`
+	URL         string `xml:"link"`
+	Date        string `xml:"pubDate"`
 	Tags        []string
 }
 

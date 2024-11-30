@@ -200,6 +200,10 @@ a:visted {
   @apply flex flex-col space-y-4 flex-grow sm:w-8/12 w-11/12 mx-auto;
 }
 
+.listing-container-header {
+  @apply flex items-center space-x-3;
+}
+
 .listing-item-container {
   @apply w-auto dark:bg-[#2E2E33] bg-gray-200 rounded-md px-6 py-4 flex flex-col dark:text-white text-black space-y-1 relative;
 }
