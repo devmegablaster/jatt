@@ -21,8 +21,10 @@ type Renderer struct {
 }
 
 type RenderedFile struct {
+	ID          string
 	Name        string
 	Html        []byte
+	HtmlContent string
 	FrontMatter reader.FrontMatter
 }
 
@@ -38,18 +40,19 @@ func (r *Renderer) Render(files []reader.File) []RenderedFile {
 	for _, file := range files {
 
 		html := r.ContentToHtml(file.Content)
+		var content templ.Component
 		var component templ.Component
 
 		switch file.FrontMatter.Layout {
 		case "home":
-			content := templates.Home(r.cfg.HomeConfig)
+			content = templates.Home(r.cfg.HomeConfig)
 			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, content)
 		case "listing":
-			listing := templates.Listing(string(html), file.Listing)
-			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, listing)
+			content = templates.Listing(string(html), file.Listing)
+			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, content)
 		case "post":
-			post := templates.Post(file.FrontMatter, string(html))
-			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, post)
+			content = templates.Post(file.FrontMatter, string(html))
+			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, content)
 		default:
 			content := templates.Content(string(html))
 			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, content)
@@ -59,8 +62,10 @@ func (r *Renderer) Render(files []reader.File) []RenderedFile {
 		component.Render(context.Background(), &buf)
 
 		renderedFiles = append(renderedFiles, RenderedFile{
+			ID:          file.ID,
 			Name:        file.Name,
 			Html:        buf.Bytes(),
+			HtmlContent: string(html),
 			FrontMatter: file.FrontMatter,
 		})
 

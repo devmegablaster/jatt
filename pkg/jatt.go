@@ -14,7 +14,7 @@ import (
 
 type Jatt struct {
 	reader   *reader.Reader
-	rss      *rss.Rss
+	rss      *rss.RssSvc
 	renderer *renderer.Renderer
 	writer   *writer.Writer
 }
@@ -32,8 +32,8 @@ func (j *Jatt) Run() {
 	timeStart := time.Now()
 
 	files := j.reader.Read()
-	feed := j.rss.GenerateFeed(files)
 	renderedFiles := j.renderer.Render(files)
+	feed := j.rss.GenerateFeed(files, renderedFiles)
 	j.writer.WriteFiles(renderedFiles)
 	j.writer.WriteRSSFeed(feed)
 	j.writer.CopyStatic()

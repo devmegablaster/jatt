@@ -19,6 +19,7 @@ type Reader struct {
 }
 
 type ListingItem struct {
+	ID          string
 	Name        string
 	Title       string `xml:"title"`
 	Description string `xml:"description"`
@@ -28,6 +29,7 @@ type ListingItem struct {
 }
 
 type File struct {
+	ID          string
 	Name        string
 	Content     []byte
 	FrontMatter FrontMatter
@@ -35,6 +37,7 @@ type File struct {
 }
 
 type FrontMatter struct {
+	ID          string   `yaml:"id"`
 	Layout      string   `yaml:"layout"`
 	Title       string   `yaml:"title"`
 	Description string   `yaml:"description"`
@@ -93,6 +96,7 @@ func (r *Reader) ReadDir(dirPath string) []File {
 		fm := r.ReadFrontMatter(buf.Bytes())
 
 		fileStruct := File{
+			ID:          fm.ID,
 			Name:        strings.Replace(dirPath+"/"+strings.Split(file.Name(), ".")[0], "content/", "", 1),
 			Content:     []byte(strings.Join(strings.Split(string(buf.Bytes()), "---")[2:], "")),
 			FrontMatter: fm,
@@ -166,7 +170,9 @@ func (r *Reader) GenerateListing(fileStruct File) []ListingItem {
 		if fm.Draft {
 			continue
 		}
+
 		files = append(files, ListingItem{
+			ID:          fm.ID,
 			Name:        strings.Split(file.Name(), ".")[0],
 			URL:         strings.Replace(dirPath+"/"+strings.Split(file.Name(), ".")[0], "content", "", 1),
 			Date:        fm.Date,
