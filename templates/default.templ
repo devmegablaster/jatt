@@ -1,8 +1,11 @@
 package templates
 
-import "github.com/devmegablaster/jatt/internal/config"
+import (
+	"fmt"
+	"github.com/devmegablaster/jatt/internal/config"
+)
 
-templ Default(siteCfg config.SiteConfig, navCfg config.NavConfig, component templ.Component) {
+templ Default(siteCfg config.SiteConfig, navCfg config.NavConfig, anaCfg config.AnalyticsConfig, component templ.Component) {
 	<html>
 		<head>
 			<title>{ siteCfg.Title }</title>
@@ -13,6 +16,7 @@ templ Default(siteCfg config.SiteConfig, navCfg config.NavConfig, component temp
 			<!-- Load Individual Languages -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
 			<script>hljs.highlightAll();</script>
+			<script data-goatcounter={ fmt.Sprintf("https://%s.goatcounter.com/count", anaCfg.Goatcounter) } async src="//gc.zgo.at/count.js"></script>
 		</head>
 		<body>
 			@Nav(navCfg)

@@ -36,3 +36,6 @@ home:
       url: /posts
     - name: About
       url: /about
+
+analytics:
+  goatcounter: "code"

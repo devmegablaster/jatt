@@ -8,9 +8,14 @@ import (
 )
 
 type JattConfig struct {
-	SiteConfig SiteConfig `mapstructure:",squash" yaml:",inline"`
-	NavConfig  NavConfig  `mapstructure:"nav" yaml:"nav"`
-	HomeConfig HomeConfig `mapstructure:"home" yaml:"home"`
+	SiteConfig      SiteConfig      `mapstructure:",squash" yaml:",inline"`
+	NavConfig       NavConfig       `mapstructure:"nav" yaml:"nav"`
+	HomeConfig      HomeConfig      `mapstructure:"home" yaml:"home"`
+	AnalyticsConfig AnalyticsConfig `mapstructure:"analytics" yaml:"analytics"`
+}
+
+type AnalyticsConfig struct {
+	Goatcounter string `mapstructure:"goatcounter"`
 }
 
 type SiteConfig struct {
