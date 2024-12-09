@@ -59,7 +59,7 @@ ul li:not(:last-child) {
 }
 
 figure {
-  @apply flex flex-col items-center justify-center w-full my-4 mx-0;
+  @apply flex flex-col items-center justify-center w-full mt-8 mb-4 mx-0;
 }
 
 figcaption {
@@ -67,7 +67,7 @@ figcaption {
 }
 
 figure img {
-  @apply max-w-[75%] mx-auto;
+  @apply max-w-[75%] mx-auto rounded-lg shadow-xl;
 }
 
 hr {
