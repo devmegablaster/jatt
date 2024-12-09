@@ -1,0 +1,25 @@
+package templates
+
+import (
+	"github.com/devmegablaster/jatt/internal/config"
+	"github.com/devmegablaster/jatt/pkg/reader"
+)
+
+templ SEO(frontMatter reader.FrontMatter, cfg config.SiteConfig) {
+	<title>
+		if frontMatter.Title != "" {
+			{ frontMatter.Title }
+		} else {
+			{ cfg.Title }
+		}
+	</title>
+	<meta
+		name="description"
+		if frontMatter.Description != "" {
+			content={ frontMatter.Description }
+		} else {
+			content={ cfg.Description }
+		}
+	/>
+	<meta name="author" content={ cfg.Author }/>
+}

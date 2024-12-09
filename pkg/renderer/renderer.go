@@ -46,16 +46,16 @@ func (r *Renderer) Render(files []reader.File) []RenderedFile {
 		switch file.FrontMatter.Layout {
 		case "home":
 			content = templates.Home(r.cfg.HomeConfig)
-			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, r.cfg.AnalyticsConfig, content)
+			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, r.cfg.AnalyticsConfig, file.FrontMatter, content)
 		case "listing":
 			content = templates.Listing(string(html), file.Listing)
-			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, r.cfg.AnalyticsConfig, content)
+			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, r.cfg.AnalyticsConfig, file.FrontMatter, content)
 		case "post":
 			content = templates.Post(file.FrontMatter, string(html))
-			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, r.cfg.AnalyticsConfig, content)
+			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, r.cfg.AnalyticsConfig, file.FrontMatter, content)
 		default:
 			content := templates.Content(string(html))
-			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, r.cfg.AnalyticsConfig, content)
+			component = templates.Default(r.cfg.SiteConfig, r.cfg.NavConfig, r.cfg.AnalyticsConfig, file.FrontMatter, content)
 		}
 
 		buf := bytes.Buffer{}

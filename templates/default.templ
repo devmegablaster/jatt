@@ -3,12 +3,13 @@ package templates
 import (
 	"fmt"
 	"github.com/devmegablaster/jatt/internal/config"
+	"github.com/devmegablaster/jatt/pkg/reader"
 )
 
-templ Default(siteCfg config.SiteConfig, navCfg config.NavConfig, anaCfg config.AnalyticsConfig, component templ.Component) {
+templ Default(siteCfg config.SiteConfig, navCfg config.NavConfig, anaCfg config.AnalyticsConfig, fm reader.FrontMatter, component templ.Component) {
 	<html>
 		<head>
-			<title>{ siteCfg.Title }</title>
+			@SEO(fm, siteCfg)
 			@GlobalStyles()
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"/>
