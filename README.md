@@ -2,6 +2,8 @@
 
 Jatt is a fast and simple static site generator written in Go. It allows you to create and configure static websites with minimal effort. Just set up your site using the `jatt.yaml` configuration file and run the `jatt` command to build it.
 
+![Jatt in action](jatt.gif)
+
 ## Installation
 
 ### Macos
