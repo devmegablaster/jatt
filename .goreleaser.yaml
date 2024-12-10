@@ -12,6 +12,8 @@ builds:
       - linux
       - windows
       - darwin
+    ldflags:
+      - -s -w -X github.com/devmegablaster/jatt/cmd.JattVersion={{.Version}}
 
 archives:
   - format: tar.gz
