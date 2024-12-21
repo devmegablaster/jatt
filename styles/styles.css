@@ -108,7 +108,7 @@ hr {
 }
 
 .post-matter {
-  @apply sm:w-8/12 w-11/12 mx-auto flex flex-col space-y-2
+  @apply sm:w-8/12 w-11/12 mx-auto flex flex-col space-y-2 mt-4
 }
 
 .post-matter h1 {

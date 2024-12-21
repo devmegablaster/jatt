@@ -315,6 +315,7 @@ hr {
 .post-matter {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 1rem;
   display: flex;
   width: 91.666667%;
   flex-direction: column;

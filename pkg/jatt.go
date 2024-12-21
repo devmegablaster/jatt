@@ -2,6 +2,7 @@ package pkg
 
 import (
 	"fmt"
+	"sync"
 	"time"
 
 	"github.com/devmegablaster/jatt/internal/config"
@@ -17,6 +18,7 @@ type Jatt struct {
 	rss      *rss.RssSvc
 	renderer *renderer.Renderer
 	writer   *writer.Writer
+	wg       sync.WaitGroup
 }
 
 func NewJatt(cfg config.JattConfig) *Jatt {
@@ -31,12 +33,22 @@ func NewJatt(cfg config.JattConfig) *Jatt {
 func (j *Jatt) Run() {
 	timeStart := time.Now()
 
+	j.wg.Add(1)
+	go j.writer.CopyStatic(&j.wg)
+
 	files := j.reader.Read()
 	renderedFiles := j.renderer.Render(files)
-	feed := j.rss.GenerateFeed(files, renderedFiles)
-	j.writer.WriteFiles(renderedFiles)
+
+	var feed []byte
+	j.wg.Add(1)
+	go j.rss.GenerateFeed(&j.wg, files, renderedFiles, feed)
+
+	j.wg.Add(1)
+	go j.writer.WriteFiles(&j.wg, renderedFiles)
+
+	j.wg.Wait()
+
 	j.writer.WriteRSSFeed(feed)
-	j.writer.CopyStatic()
 
 	timeEnd := time.Now()
 	fmt.Println(styles.StatsStyle.Render(fmt.Sprintf("\n⚡Took %v", timeEnd.Sub(timeStart).Round(time.Millisecond))))

@@ -6,6 +6,7 @@ import (
 	"io"
 	"os"
 	"strings"
+	"sync"
 
 	"github.com/devmegablaster/jatt/internal/config"
 	"github.com/devmegablaster/jatt/pkg/renderer"
@@ -22,7 +23,9 @@ func NewWriter(cfg config.JattConfig) *Writer {
 	}
 }
 
-func (w *Writer) WriteFiles(files []renderer.RenderedFile) {
+func (w *Writer) WriteFiles(wg *sync.WaitGroup, files []renderer.RenderedFile) {
+	defer wg.Done()
+
 	w.RemoveOldOutput()
 	w.CreateOutputDir()
 
@@ -81,7 +84,9 @@ func (w *Writer) WriteFile(file renderer.RenderedFile) error {
 	return nil
 }
 
-func (w *Writer) CopyStatic() error {
+func (w *Writer) CopyStatic(wg *sync.WaitGroup) error {
+	defer wg.Done()
+
 	staticDir, err := os.ReadDir("static")
 	if err != nil {
 		return err
