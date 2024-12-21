@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/VojtaStruhar/goldmark-obsidian-callout"
 	"github.com/a-h/templ"
 	"github.com/devmegablaster/jatt/internal/config"
 	"github.com/devmegablaster/jatt/pkg/reader"
@@ -80,6 +81,7 @@ func (r *Renderer) ContentToHtml(content []byte) []byte {
 		goldmark.WithExtensions(
 			extension.GFM,
 			figure.Figure,
+			callout.ObsidianCallout,
 		),
 	)
 

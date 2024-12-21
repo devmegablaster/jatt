@@ -35,27 +35,42 @@ svg {
 }
 
 ol {
-  @apply list-decimal list-outside pl-4 m-0;
+  @apply list-decimal list-outside pl-2 m-0;
 }
 
 ol li {
-  @apply list-decimal list-outside pl-4 m-0;
+  @apply list-decimal list-outside pl-1 m-0;
 }
 
 ol li:not(:last-child) {
   @apply mb-2;
 }
 
+ol p {
+  @apply m-0 mb-2;
+}
+
 ul {
-  @apply list-disc list-outside pl-4 m-0;
+  @apply list-disc list-outside pl-2 m-0;
 }
 
 ul li {
-  @apply list-disc list-outside pl-4 m-0;
+  @apply list-disc list-outside pl-1 m-0;
 }
 
 ul li:not(:last-child) {
   @apply mb-2;
+}
+
+ul p {
+  @apply m-0 mb-2;
+}
+
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+  @apply mt-2;
 }
 
 figure {
@@ -234,3 +249,34 @@ a:visted {
   @apply text-white;
 }
 
+blockquote {
+  @apply p-0 w-full m-0
+}
+
+.callout {
+  @apply w-full border rounded-lg p-4 my-4 shadow-sm text-gray-800 bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 flex flex-col;
+}
+
+.callout > summary {
+  @apply cursor-pointer font-bold mb-2 flex items-center;
+}
+
+.callout > p {
+  @apply m-0 p-0;
+}
+
+[data-callout="note"] {
+  @apply border-blue-500 bg-blue-50 text-blue-800 dark:bg-blue-900 dark:border-blue-400 dark:text-blue-200;
+}
+
+[data-callout="warning"] {
+  @apply border-yellow-500 bg-yellow-50 text-yellow-800 dark:bg-yellow-900 dark:border-yellow-400 dark:text-yellow-200;
+}
+
+[data-callout="info"] {
+  @apply border-cyan-500 bg-cyan-50 text-cyan-800 dark:bg-cyan-900 dark:border-cyan-400 dark:text-cyan-200;
+}
+
+[data-callout="success"] {
+  @apply border-green-500 bg-green-50 text-green-800 dark:bg-green-900 dark:border-green-400 dark:text-green-200;
+}
