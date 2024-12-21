@@ -112,7 +112,9 @@ func (w *Writer) CopyStatic(wg *sync.WaitGroup) error {
 	return nil
 }
 
-func (w *Writer) WriteRSSFeed(feed []byte) {
+func (w *Writer) WriteRSSFeed(wg *sync.WaitGroup, feed []byte) {
+	defer wg.Done()
+
 	outputDir := w.cfg.SiteConfig.OutputDir
 	err := os.WriteFile(outputDir+"/rss.xml", feed, 0644)
 	if err != nil {

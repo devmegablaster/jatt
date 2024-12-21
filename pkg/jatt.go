@@ -33,9 +33,6 @@ func NewJatt(cfg config.JattConfig) *Jatt {
 func (j *Jatt) Run() {
 	timeStart := time.Now()
 
-	j.wg.Add(1)
-	go j.writer.CopyStatic(&j.wg)
-
 	files := j.reader.Read()
 	renderedFiles := j.renderer.Render(files)
 
@@ -48,7 +45,12 @@ func (j *Jatt) Run() {
 
 	j.wg.Wait()
 
-	j.writer.WriteRSSFeed(feed)
+	j.wg.Add(1)
+	go j.writer.CopyStatic(&j.wg)
+	j.wg.Add(1)
+	go j.writer.WriteRSSFeed(&j.wg, feed)
+
+	j.wg.Wait()
 
 	timeEnd := time.Now()
 	fmt.Println(styles.StatsStyle.Render(fmt.Sprintf("\n⚡Took %v", timeEnd.Sub(timeStart).Round(time.Millisecond))))
