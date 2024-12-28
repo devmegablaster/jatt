@@ -44,7 +44,7 @@ type Item struct {
 	Content     string    `xml:"content:encoded"`
 }
 
-func (r *RssSvc) GenerateFeed(files []reader.File, renderedFiles []renderer.RenderedFile, target []byte) {
+func (r *RssSvc) GenerateFeed(files []reader.File, renderedFiles []renderer.RenderedFile) []byte {
 	posts := []Item{}
 
 	for _, file := range files {
@@ -102,5 +102,5 @@ func (r *RssSvc) GenerateFeed(files []reader.File, renderedFiles []renderer.Rend
 
 	fmt.Println(styles.DebugStyle.Render("Generated RSS feed"))
 
-	target = enc
+	return enc
 }
