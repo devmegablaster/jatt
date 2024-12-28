@@ -37,17 +37,14 @@ func (j *Jatt) Run() {
 	renderedFiles := j.renderer.Render(files)
 
 	var feed []byte
-	j.wg.Add(1)
+	j.wg.Add(2)
 	go j.rss.GenerateFeed(&j.wg, files, renderedFiles, feed)
-
-	j.wg.Add(1)
 	go j.writer.WriteFiles(&j.wg, renderedFiles)
 
 	j.wg.Wait()
 
-	j.wg.Add(1)
+	j.wg.Add(2)
 	go j.writer.CopyStatic(&j.wg)
-	j.wg.Add(1)
 	go j.writer.WriteRSSFeed(&j.wg, feed)
 
 	j.wg.Wait()

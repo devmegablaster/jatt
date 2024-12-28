@@ -4,10 +4,10 @@ import "github.com/devmegablaster/jatt/internal/config"
 
 templ Home(cfg config.HomeConfig) {
 	<div class="home-container">
-		<img src={ cfg.Image } class="home-image"/>
+		<img src={ cfg.Image } alt={ cfg.Name } class="home-image"/>
 		<div class="name-description-container">
 			<h1 class="home-name">{ cfg.Name }</h1>
-			<p class="home-description">{ cfg.Description }</p>
+			<p class="home-mdescription">{ cfg.Description }</p>
 		</div>
 		<div class="home-social-container">
 			for _, social := range cfg.Social {
