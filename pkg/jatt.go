@@ -45,7 +45,7 @@ func (j *Jatt) Run() {
 
 	// Generate and write RSS feed
 	feed := j.rss.GenerateFeed(files, renderedFiles)
-	j.writer.WriteFileWithName("rss.xml", feed)
+	j.writer.WriteFileWithName("feed.xml", feed)
 
 	// Generate and write sitemap
 	sitemap := j.sitemap.GenerateSitemap(files)
