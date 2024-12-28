@@ -113,7 +113,7 @@ func SEO(frontMatter reader.FrontMatter, cfg config.SiteConfig) templ.Component 
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><link rel=\"icon\" href=\"favicon.ico\" type=\"image/x-icon\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><meta http-equiv=\"content-language\" content=\"en\"><link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" href=\"favicon.ico\" type=\"image/x-icon\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
