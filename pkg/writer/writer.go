@@ -107,13 +107,13 @@ func (w *Writer) CopyStatic() error {
 	return nil
 }
 
-func (w *Writer) WriteRSSFeed(feed []byte) {
+func (w *Writer) WriteFileWithName(name string, feed []byte) {
 	outputDir := w.cfg.SiteConfig.OutputDir
-	err := os.WriteFile(outputDir+"/rss.xml", feed, 0644)
+	err := os.WriteFile(outputDir+"/"+name, feed, 0644)
 	if err != nil {
 		fmt.Println(styles.ErrorStyle.Render("Error writing RSS feed"))
 		os.Exit(1)
 	}
 
-	fmt.Println(styles.SuccessStyle.Render("Wrote RSS feed"))
+	fmt.Println(styles.SuccessStyle.Render("Wrote " + name))
 }
