@@ -3,7 +3,6 @@ package rss
 import (
 	"encoding/xml"
 	"fmt"
-	"sync"
 	"time"
 
 	"github.com/devmegablaster/jatt/internal/config"
@@ -45,9 +44,7 @@ type Item struct {
 	Content     string    `xml:"content:encoded"`
 }
 
-func (r *RssSvc) GenerateFeed(wg *sync.WaitGroup, files []reader.File, renderedFiles []renderer.RenderedFile, target []byte) {
-	defer wg.Done()
-
+func (r *RssSvc) GenerateFeed(files []reader.File, renderedFiles []renderer.RenderedFile, target []byte) {
 	posts := []Item{}
 
 	for _, file := range files {

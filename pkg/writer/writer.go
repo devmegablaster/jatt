@@ -6,7 +6,6 @@ import (
 	"io"
 	"os"
 	"strings"
-	"sync"
 
 	"github.com/devmegablaster/jatt/internal/config"
 	"github.com/devmegablaster/jatt/pkg/renderer"
@@ -23,9 +22,7 @@ func NewWriter(cfg config.JattConfig) *Writer {
 	}
 }
 
-func (w *Writer) WriteFiles(wg *sync.WaitGroup, files []renderer.RenderedFile) {
-	defer wg.Done()
-
+func (w *Writer) WriteFiles(files []renderer.RenderedFile) {
 	w.RemoveOldOutput()
 	w.CreateOutputDir()
 
@@ -84,9 +81,7 @@ func (w *Writer) WriteFile(file renderer.RenderedFile) error {
 	return nil
 }
 
-func (w *Writer) CopyStatic(wg *sync.WaitGroup) error {
-	defer wg.Done()
-
+func (w *Writer) CopyStatic() error {
 	staticDir, err := os.ReadDir("static")
 	if err != nil {
 		return err
@@ -112,9 +107,7 @@ func (w *Writer) CopyStatic(wg *sync.WaitGroup) error {
 	return nil
 }
 
-func (w *Writer) WriteRSSFeed(wg *sync.WaitGroup, feed []byte) {
-	defer wg.Done()
-
+func (w *Writer) WriteRSSFeed(feed []byte) {
 	outputDir := w.cfg.SiteConfig.OutputDir
 	err := os.WriteFile(outputDir+"/rss.xml", feed, 0644)
 	if err != nil {

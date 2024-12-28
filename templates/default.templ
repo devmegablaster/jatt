@@ -7,7 +7,8 @@ import (
 )
 
 templ Default(siteCfg config.SiteConfig, navCfg config.NavConfig, anaCfg config.AnalyticsConfig, fm reader.FrontMatter, component templ.Component) {
-	<html>
+	<!DOCTYPE html>
+	<html lang="en">
 		<head>
 			@SEO(fm, siteCfg)
 			@GlobalStyles()
