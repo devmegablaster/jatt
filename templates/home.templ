@@ -7,7 +7,7 @@ templ Home(cfg config.HomeConfig) {
 		<img src={ cfg.Image } alt={ cfg.Name } class="home-image"/>
 		<div class="name-description-container">
 			<h1 class="home-name">{ cfg.Name }</h1>
-			<p class="home-mdescription">{ cfg.Description }</p>
+			<p class="home-description">{ cfg.Description }</p>
 		</div>
 		<div class="home-social-container">
 			for _, social := range cfg.Social {
